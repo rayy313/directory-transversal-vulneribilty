@@ -5,7 +5,37 @@ Commonly recognized by terms like "dot-dot-slash," "directory traversal," "direc
 
 # HOW TO AVOID PATH TRANSVERSAL VULNERIBILTIES  
 In the development of web applications, incorporating local resources like images, themes, and scripts is a common necessity. However, with each inclusion of a resource or file in the application, there exists a potential risk. Attackers may exploit vulnerabilities to include unauthorized files or remote resources, posing a threat to the application's security.  
-## Identifying if you are vulnerable  
+## identifying if you are vulnerable  
 - Ensure a clear understanding of how the operating system will handle filenames that are provided to it.
 - Avoid placing sensitive configuration files within the web root directory.
-- On Windows IIS servers, it's advisable not to have the web root located on the system disk to prevent potential recursive traversal into system directories.  
+- On Windows IIS servers, it's advisable not to have the web root located on the system disk to prevent potential recursive traversal into system directories.
+## how to avoid  
+- When making file system calls, it is recommended to minimize reliance on user input.
+- Ensure that users cannot specify every part of the file path; instead, incorporate it within your own code for added security.
+- Check if the user's input is valid by only accepting trusted information. Avoid trying to clean or modify the data.
+- If you have to use information from users for working with files, make sure to organize or standardize it before using it in file operations.
+
+## Example 1  
+The examples below illustrate how the application handles the resources currently in use.  
+- http://some_site.com.br/get-files.jsp?file=report.pdf  
+- http://some_site.com.br/get-page.php?home=aaa.html  
+- http://some_site.com.br/some-page.asp?page=index.html
+
+In these instances, it's feasible to insert a harmful string as the variable parameter to potentially access files situated beyond the web publish directory.  
+- http://some_site.com.br/get-files?file=../../../../some dir/some file  
+- http://some_site.com.br/../../../../some dir/some file
+
+On a Windows system, an attacker can only navigate within a partition where the web root is located, whereas on Linux, they have the ability to navigate throughout the entire disk.  
+
+# ABSOLUTE PATH TRANSVERSAL  
+The following URLs may be vulnerable to this attack:  
+http://testsite.com/get.php?f=list  
+http://testsite.com/get.cgi?f=2  
+http://testsite.com/get.asp?f=test  
+
+An attacker can execute this attack like this:  
+http://testsite.com/get.php?f=/var/www/html/get.php  
+http://testsite.com/get.cgi?f=/var/www/html/admin/get.inc  
+http://testsite.com/get.asp?f=/etc/passwd  
+
+When the web server provides error information in a web application, it becomes simpler for attackers to make educated guesses about the correct locations, such as the path to a file containing source code, which might then be revealed.
