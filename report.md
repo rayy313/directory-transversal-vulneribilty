@@ -47,7 +47,7 @@ When the web server provides error information in a web application, it becomes 
 - METASPLOIT
 - DIRBUSTER
 
-# how to fix this vulneribilty  
+# how to fix this vulneribility  
 Fixing a directory traversal vulnerability involves implementing secure coding practices and applying proper input validation. Here are some general steps to help address and mitigate directory traversal vulnerabilities:  
 
 
@@ -79,4 +79,7 @@ Configure the web server to run with the least privilege necessary. Ensure that 
 Customize error messages to provide minimal information to attackers. Avoid disclosing specific details about file paths or the server's directory structure in error messages.  
 
 ## Use Security Libraries:  
-Leverage security libraries or frameworks that offer built-in protection against directory traversal attacks. Many web development frameworks have security features that can help prevent such vulnerabilities.
+Leverage security libraries or frameworks that offer built-in protection against directory traversal attacks. Many web development frameworks have security features that can help prevent such vulnerabilities.  
+
+## CONCLUSION:  
+Attackers can gain access to configuration files, user databases, and proprietary information, leading to breaches of privacy and data theft. Furthermore, this vulnerability can serve as a stepping stone for launching more sophisticated attacks, such as remote code execution.
