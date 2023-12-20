@@ -1,1 +1,4 @@
-# OVERVIEW
+# OVERVIEW  
+A path traversal attack, also referred to as directory traversal, is a type of security exploit that seeks to reach files and directories located outside the designated web root folder. By manipulating variables that reference files with sequences like "dot-dot-slash (../)" and its variations, or by utilizing absolute file paths, attackers may potentially gain unauthorized access to various files and directories. These could include sensitive data such as application source code, configuration files, or critical system files. It's important to note that the extent of file access is constrained by system operational access controls, such as locked or in-use files, particularly in the case of the Microsoft Windows operating system.
+
+Commonly recognized by terms like "dot-dot-slash," "directory traversal," "directory climbing," and "backtracking," this type of attack exploits vulnerabilities in file path handling to navigate beyond the intended directory structure, posing a significant risk to the security of web applications.
