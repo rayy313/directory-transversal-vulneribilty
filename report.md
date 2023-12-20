@@ -38,4 +38,45 @@ http://testsite.com/get.php?f=/var/www/html/get.php
 http://testsite.com/get.cgi?f=/var/www/html/admin/get.inc  
 http://testsite.com/get.asp?f=/etc/passwd  
 
-When the web server provides error information in a web application, it becomes simpler for attackers to make educated guesses about the correct locations, such as the path to a file containing source code, which might then be revealed.
+When the web server provides error information in a web application, it becomes simpler for attackers to make educated guesses about the correct locations, such as the path to a file containing source code, which might then be revealed.  
+
+# TOOLS USED FOR DIRECTORY TRANSVERSAL ATTACK  
+- BURPSUITE
+- OWASP ZAP
+- DOTDOTPWN
+- METASPLOIT
+- DIRBUSTER
+
+# how to fix this vulneribilty  
+Fixing a directory traversal vulnerability involves implementing secure coding practices and applying proper input validation. Here are some general steps to help address and mitigate directory traversal vulnerabilities:  
+
+
+## Input Validation:
+
+Implement strict input validation on all user-supplied input, especially parameters involving file paths. Ensure that input adheres to expected patterns and rejects any attempts at directory traversal.  
+
+## Use Whitelists:
+
+Create whitelists of allowed characters or patterns for file and directory names. Validate user input against these whitelists to prevent malicious characters or sequences.  
+
+## Absolute File Paths:
+
+Instead of relying on relative paths, use absolute file paths when including or accessing files. This helps to ensure that the file is retrieved from the intended location.  
+
+## Limit File Access:  
+
+
+Set up proper file access controls to restrict which files and directories the web server and application have permission to access. Avoid giving unnecessary permissions to files and directories.  
+
+## Web Server Configuration:  
+
+
+Configure the web server to run with the least privilege necessary. Ensure that the web server process has restricted access to sensitive files and directories.  
+
+## Error Handling:  
+
+
+Customize error messages to provide minimal information to attackers. Avoid disclosing specific details about file paths or the server's directory structure in error messages.  
+
+## Use Security Libraries:  
+Leverage security libraries or frameworks that offer built-in protection against directory traversal attacks. Many web development frameworks have security features that can help prevent such vulnerabilities.
